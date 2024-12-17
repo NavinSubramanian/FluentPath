@@ -1,6 +1,6 @@
-import React, { useState,useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
-import Cookies from 'js-cookie'
+import Cookies from "js-cookie";
 import { useNavigate } from "react-router-dom";
 const UploadExcel = () => {
   const [file, setFile] = useState(null);
@@ -62,9 +62,13 @@ const UploadExcel = () => {
     formData.append("description", courseDescription); // Add course description
 
     try {
-      const response = await axios.post("http://localhost:5000/api/upload", formData, {
-        headers: { "Content-Type": "multipart/form-data" },
-      });
+      const response = await axios.post(
+        "https://fluent-path.vercel.app/api/upload",
+        formData,
+        {
+          headers: { "Content-Type": "multipart/form-data" },
+        }
+      );
 
       setMessage(response.data.message);
     } catch (error) {

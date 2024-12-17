@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom'; 
+import { Link } from 'react-router-dom';
 import axios from 'axios';
 import Cookies from 'js-cookie';
 import { useNavigate } from 'react-router-dom';
@@ -8,26 +8,26 @@ import study from './assets/images/study.png';
 import bell from './assets/images/bell.png';
 import boy from './assets/images/boy.png';
 import coinIcon from './assets/images/star.png';
-import clockIcon from './assets/images/clock.png'; 
+import clockIcon from './assets/images/clock.png';
 import bookIcon from './assets/images/chapter.png';
 
 const email = Cookies.get('email');
-const isAdmin = Cookies.get('isAdmin') === 'true'; 
+const isAdmin = Cookies.get('isAdmin') === 'true';
 let email2 = '';
 if (email) {
-   email2 = email.split('@')[0];
+  email2 = email.split('@')[0];
 }
 export const courses1 = [
   {
     id: 1,
     image: 'https://img.freepik.com/free-vector/online-tutorials-concept_52683-37481.jpg?w=740',
     title: 'Learn Basic HTML',
-    desc:'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+    desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
     time: '2h 30min',
     chapters: '15 Chapters',
     topic: 'Grammar',
     mentor: 'xyz',
-    level:'Basic',
+    level: 'Basic',
   },
   {
     id: 2,
@@ -37,7 +37,7 @@ export const courses1 = [
     chapters: '18 Chapters',
     topic: 'Grammar',
     mentor: 'xyz',
-    level:'Basic',
+    level: 'Basic',
   },
   {
     id: 3,
@@ -47,7 +47,7 @@ export const courses1 = [
     chapters: '20 Chapters',
     topic: 'Grammar',
     mentor: 'xyz',
-    level:'Basic',
+    level: 'Basic',
   },
   {
     id: 4,
@@ -57,7 +57,7 @@ export const courses1 = [
     chapters: '25 Chapters',
     topic: 'Grammar',
     mentor: 'xyz',
-    level:'Basic',
+    level: 'Basic',
   },
   {
     id: 5,
@@ -67,11 +67,11 @@ export const courses1 = [
     chapters: '30 Chapters',
     topic: 'Grammar',
     mentor: 'xyz',
-    level:'Basic',
+    level: 'Basic',
   }
 ];
 const CourseCard = ({ id, image, title, time, chapters }) => {
-  const navigate=useNavigate()
+  const navigate = useNavigate()
   const handleEnroll = async () => {
     if (!email) {
       alert('Please log in to enroll in the course.');
@@ -80,9 +80,9 @@ const CourseCard = ({ id, image, title, time, chapters }) => {
 
 
     try {
-      const response = await axios.post('http://localhost:5000/api/enroll/enrollcourse', { email, moduleId: id });
+      const response = await axios.post('https://fluent-path.vercel.app/api/enroll/enrollcourse', { email, moduleId: id });
       alert(response.data.message);
-      if(response.data.message==='Successfully enrolled in course'){
+      if (response.data.message === 'Successfully enrolled in course') {
         navigate(`/course/${id}`)
       }
 
@@ -122,14 +122,14 @@ const CourseList = () => {
     const fetchCourses = async () => {
       try {
         // Fetch all available courses
-        const courseResponse = await axios.get('http://localhost:5000/api/upload/courses');
+        const courseResponse = await axios.get('https://fluent-path.vercel.app/api/upload/courses');
         setCourses(courseResponse.data.courses || []);
-        
+
         // Fetch enrolled courses for the user
-        const enrolledResponse = await axios.get('http://localhost:5000/api/enroll/getenrolledcourses', {
+        const enrolledResponse = await axios.get('https://fluent-path.vercel.app/api/enroll/getenrolledcourses', {
           params: { email },
         });
-  
+
         setEnrolledCourses(enrolledResponse.data.enrolledCourses || []);
       } catch (err) {
         if (err.response && err.response.status === 404) {
@@ -143,11 +143,11 @@ const CourseList = () => {
         setLoading(false);
       }
     };
-  
+
     fetchCourses();
   }, []);
-  
-console.log(enrolledCourses)
+
+  console.log(enrolledCourses)
   if (loading) {
     return <div>Loading...</div>;
   }
@@ -156,8 +156,8 @@ console.log(enrolledCourses)
     return <div>{error}</div>;
   }
   const availableCourses = enrolledCourses.length
-  ? courses.filter((course) => !enrolledCourses.some((enrolled) => enrolled.courseId === course.id))
-  : courses;
+    ? courses.filter((course) => !enrolledCourses.some((enrolled) => enrolled.courseId === course.id))
+    : courses;
   return (
     <div className="course-list">
       {availableCourses.map((course) => (
@@ -175,10 +175,10 @@ console.log(enrolledCourses)
 };
 const Course = () => {
   const email = Cookies.get('email');
-  const isAdmin = Cookies.get('isAdmin') === 'true'; 
+  const isAdmin = Cookies.get('isAdmin') === 'true';
   let email2 = '';
   if (email) {
-     email2 = email.split('@')[0];
+    email2 = email.split('@')[0];
   }
   return (
     <div>
@@ -193,12 +193,12 @@ const Course = () => {
             <p>E-mail: {email || ""}</p>
           </div>
         </div>
-        {email ? 
-        <div className="notification-section">
-          
-        </div>
-        : <>
-        </>}
+        {email ?
+          <div className="notification-section">
+
+          </div>
+          : <>
+          </>}
       </div>
       <div className="course-wrapper">
         <div className="course-intro">

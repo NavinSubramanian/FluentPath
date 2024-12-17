@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom'; 
+import { Link } from 'react-router-dom';
 import axios from 'axios';
 import Cookies from 'js-cookie';
 import { useNavigate } from 'react-router-dom';
@@ -8,19 +8,19 @@ import study from './assets/images/study.png';
 import bell from './assets/images/bell.png';
 import boy from './assets/images/boy.png';
 import coinIcon from './assets/images/star.png';
-import clockIcon from './assets/images/clock.png'; 
+import clockIcon from './assets/images/clock.png';
 import bookIcon from './assets/images/chapter.png';
 
 const email = Cookies.get('email');
-const isAdmin = Cookies.get('isAdmin') === 'true'; 
+const isAdmin = Cookies.get('isAdmin') === 'true';
 let email2 = '';
 if (email) {
-   email2 = email.split('@')[0];
+  email2 = email.split('@')[0];
 }
 
 const CourseCard = ({ id, image, title, time, chapters }) => {
-  const navigate=useNavigate()
-  const email=Cookies.get('email')
+  const navigate = useNavigate()
+  const email = Cookies.get('email')
   console.log(id)
   const handleEnroll = async () => {
     if (!email) {
@@ -30,9 +30,9 @@ const CourseCard = ({ id, image, title, time, chapters }) => {
 
 
     try {
-      const response = await axios.post('http://localhost:5000/api/enroll/enrollcourse', { email, moduleId: id });
+      const response = await axios.post('https://fluent-path.vercel.app/api/enroll/enrollcourse', { email, moduleId: id });
       alert(response.data.message);
-      if(response.data.message==='Successfully enrolled in course'){
+      if (response.data.message === 'Successfully enrolled in course') {
         navigate(`/course/${id}`)
       }
 
@@ -64,18 +64,18 @@ const CourseList = () => {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    const email=Cookies.get('email')
+    const email = Cookies.get('email')
     const fetchCourses = async () => {
       try {
         // Fetch all available courses
-        const courseResponse = await axios.get('http://localhost:5000/api/upload/courses');
+        const courseResponse = await axios.get('https://fluent-path.vercel.app/api/upload/courses');
         setCourses(courseResponse.data.courses || []);
-        
+
         // Fetch enrolled courses for the user
-        const enrolledResponse = await axios.get('http://localhost:5000/api/enroll/getenrolledcourses', {
+        const enrolledResponse = await axios.get('https://fluent-path.vercel.app/api/enroll/getenrolledcourses', {
           params: { email },
         });
-  
+
         setEnrolledCourses(enrolledResponse.data.enrolledCourses || []);
       } catch (err) {
         if (err.response && err.response.status === 404) {
@@ -89,11 +89,11 @@ const CourseList = () => {
         setLoading(false);
       }
     };
-  
+
     fetchCourses();
   }, []);
-  
-console.log(enrolledCourses)
+
+  console.log(enrolledCourses)
   if (loading) {
     return <div>Loading...</div>;
   }
@@ -102,8 +102,8 @@ console.log(enrolledCourses)
     return <div>{error}</div>;
   }
   const availableCourses = enrolledCourses.length
-  ? courses.filter((course) => !enrolledCourses.some((enrolled) => enrolled.courseId === course.id))
-  : courses;
+    ? courses.filter((course) => !enrolledCourses.some((enrolled) => enrolled.courseId === course.id))
+    : courses;
   return (
     <div className="course-list">
       {enrolledCourses.map((course) => (
@@ -121,10 +121,10 @@ console.log(enrolledCourses)
 };
 const Course = () => {
   const email = Cookies.get('email');
-  const isAdmin = Cookies.get('isAdmin') === 'true'; 
+  const isAdmin = Cookies.get('isAdmin') === 'true';
   let email2 = '';
   if (email) {
-     email2 = email.split('@')[0];
+    email2 = email.split('@')[0];
   }
   return (
     <div>
@@ -151,7 +151,7 @@ const Course = () => {
         <div className="course-head">
           <h1>Enrolled Courses</h1>
         </div>
-      <CourseList />
+        <CourseList />
       </div>
     </div>
   );

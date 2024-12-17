@@ -16,7 +16,7 @@ connectDB();
 
 const app = express();
 const corsOptions = {
-    origin: 'http://localhost:3000', // Replace with your frontend URL
+    origin: 'https://fluent-path-main.vercel.app', // Replace with your frontend URL
     credentials: true, // This allows cookies to be sent with the requests
 };
 

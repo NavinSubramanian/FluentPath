@@ -43,10 +43,10 @@ const CourseHome = () => {
     useEffect(() => {
         const fetchCourseData = async () => {
             try {
-                const response = await axios.get(`http://localhost:5000/api/course/${id}`, {
+                const response = await axios.get(`https://fluent-path.vercel.app/api/course/${id}`, {
                     params: { email },
                 });
-                console.log(response.data) 
+                console.log(response.data)
                 setCourseData(response.data.courseData);
             } catch (error) {
                 console.error('Error fetching course data:', error);
@@ -96,7 +96,7 @@ const CourseHome = () => {
                                 <img src="https://img.freepik.com/free-vector/online-tutorials-concept_52683-37481.jpg?w=740" alt="Course Overview" />
                                 <div>
                                     <h3>{courseData.title}</h3>
-                                    <h4 style={{fontWeight:'200'}}><strong>ID</strong>: {courseData.courseId}</h4>
+                                    <h4 style={{ fontWeight: '200' }}><strong>ID</strong>: {courseData.courseId}</h4>
                                 </div>
                             </div>
                             <p className="borderBox">
@@ -140,7 +140,7 @@ export default CourseHome;
 //     useEffect(() => {
 //         const fetchCourseData = async () => {
 //             try {
-//                 const response = await axios.get(`http://localhost:5000/api/course/${id}`, {
+//                 const response = await axios.get(`https://fluent-path.vercel.app/api/course/${id}`, {
 //                     params: { email },
 //                 });
 //                 console.log(response.data)

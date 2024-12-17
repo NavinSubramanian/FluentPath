@@ -22,7 +22,7 @@ const Courseoverview = () => {
   const fetchCourseDetails = async () => {
     try {
       setLoading(true);
-      const response = await axios.get(`http://localhost:5000/api/course/${id}`, {
+      const response = await axios.get(`https://fluent-path.vercel.app/api/course/${id}`, {
         params: { email },
       });
       const { course, isEnrolled, courseData } = response.data;
@@ -42,7 +42,7 @@ const Courseoverview = () => {
 
   const handleEnroll = async () => {
     try {
-      const response = await axios.post('http://localhost:5000/api/enroll/enrollcourse', {
+      const response = await axios.post('https://fluent-path.vercel.app/api/enroll/enrollcourse', {
         email,
         moduleId: id,
       });
@@ -110,7 +110,7 @@ const Courseoverview = () => {
               </div>
               <div>
                 <h1>Chapters</h1>
-                <div className="lesson-list" style={{marginTop:'10px'}}>
+                <div className="lesson-list" style={{ marginTop: '10px' }}>
                   {course.submodules.map((chapter, index) => (
                     <div
                       key={chapter._id}
