@@ -24,6 +24,10 @@ p {
   font-family: var(--subfont);
 }
 
+.mainContentCourseHomePage{
+  font-size: 21px !important;
+}
+
 .fancy-button {
   background-color: #007bff;
   color: white;
