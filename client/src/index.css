@@ -26,6 +26,8 @@ p {
 
 .mainContentCourseHomePage{
   font-size: 21px !important;
+  font-family: 'Poppins' !important;
+  color: #000 !important;
 }
 
 .fancy-button {
