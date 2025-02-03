@@ -1930,3 +1930,74 @@ form.sign-in-form {
   column-gap: 10px;
   align-items: center;
 }
+
+
+/* LSRW Page */
+
+/* .lsrw{
+  background-color: var(--mainlightbg);
+  padding: 20px 0;
+} */
+
+.lsrw h1 {
+  text-align: center;
+  margin-top: 40px;
+  font-weight: 600;
+}
+
+.lsrw img {
+  height: 400px;
+  display: block;
+  margin: 0 auto;
+  margin-top: 40px;
+}
+
+.lsrw_1,
+.lsrw_2 {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.lsrw_1 h2 {
+  margin-top: 30px;
+  font-weight: 600;
+}
+
+.lsrw_1 p {
+  margin-top: 10px;
+  letter-spacing: 0.3px;
+}
+
+.playlist {
+  margin-top: 20px;
+}
+
+.playlist-item {
+  background-color: #f0f0f0;
+  margin-bottom: 20px;
+  padding: 15px;
+  border-radius: 5px;
+}
+
+.item-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.item-content p {
+  margin: 0;
+}
+
+.item-content button {
+  background-color: #fac770;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  border-radius: 5px;
+  font-size: 14px;
+}
+
+.item-content button:hover {
+  background-color: #f0a500;
+}

@@ -20,7 +20,7 @@ const Header = () => {
       <nav className="navbar">
         <ul className="nav-links">
           <li onClick={() => navigate('/course')}>Courses</li>
-          <li>Careers</li>
+          <li onClick={() => navigate('/lsrw')}>LSRW</li>
           <li onClick={() => navigate('/about')}>About us</li>
         </ul>
         <div className="main-logo">

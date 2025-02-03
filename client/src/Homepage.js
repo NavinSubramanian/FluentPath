@@ -119,8 +119,9 @@ const Homepage = () => {
 
           <div className="image-content">
             <img
-              src="https://evewaii.com/wp-content/uploads/2023/10/Asset-10.png"
+              src="https://static.vecteezy.com/system/resources/thumbnails/011/839/252/small_2x/digital-podium-student-uses-digital-podium-in-virtual-classroom-smart-classes-video-conferencing-data-visualizations-isometric-modern-illustration-vector.jpg"
               alt="icon"
+              style={{mixBlendMode: 'multiply'}}
               className="private-image"
             />
           </div>

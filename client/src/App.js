@@ -10,6 +10,8 @@ import CourseHome from './CourseHome';
 import CourseModule from './components/CourseModule';
 import UploadExcel from './components/UploadExcel';
 import Course2 from './Course2';
+import LSRW from './LSRW';
+
 function App() {
   return (
     <UserProvider>
@@ -18,7 +20,7 @@ function App() {
         <Route path="/" element={<Homepage />} />
         <Route path="/getstarted" element={<Getstarted />} />
         <Route path="/about" element={<About />} />
-
+        <Route path="/lsrw" element={<LSRW />} />
 
         <Route path="course" element={<Course />} />
         <Route path="enrolledcourse" element={<Course2 />} />
@@ -27,7 +29,6 @@ function App() {
         <Route path='/learn/:id/home' element={<CourseHome />}></Route>
         <Route path='/admin/upload' element={<UploadExcel />}></Route>
         <Route path='/learn/:id/home/module/:moduleid' element={<CourseModule />}></Route>
-
       </Routes>
     </BrowserRouter>
     </UserProvider>
