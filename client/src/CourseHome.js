@@ -13,6 +13,7 @@ const CourseHome = () => {
     const [section, setSection] = useState(1);
     const email = Cookies.get('email'); // Get email from cookies
     const [courseData, setCourseData] = useState(null); // Stores course data
+    const [courseTestLink, setCourseTestLink] = useState(null)
     const [loading, setLoading] = useState(true); // Loading state
     const modules = [
         {
@@ -48,6 +49,7 @@ const CourseHome = () => {
                 });
                 console.log(response.data)
                 setCourseData(response.data.courseData);
+                setCourseTestLink(response.data.course.testLink);
             } catch (error) {
                 console.error('Error fetching course data:', error);
                 alert('Failed to load course data. Redirecting...');
@@ -113,7 +115,7 @@ const CourseHome = () => {
                             <h1 style={{marginBottom:'20px'}}>Practice Test</h1>
                             <p style={{marginBottom:'20px'}}><b>Remainder:</b> This test can only be taken once after which the test page will not show, however you can download your test performance</p>
                             <p style={{marginBottom:'40px'}}>Before taking the test link ensure that you are <u>logged in</u> on our other website '<a target='_blank' href='https://code-box-delta.vercel.app/'>CodeBox</a>'</p>
-                            <a className='enroll-btn' style={{textDecoration:'none'}} href={`${course.testLink}`} target="_blank">Start Test</a>
+                            <a className='enroll-btn' style={{textDecoration:'none'}} href={`${courseTestLink}`} target="_blank">Start Test</a>
                         </>
                     )}
                 </div>
