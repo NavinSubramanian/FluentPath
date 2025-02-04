@@ -86,7 +86,7 @@ const CourseHome = () => {
                     <h2>{courseData.title}</h2>
                     <hr />
                     <p onClick={() => setSection(1)} className={`list-elements ${section === 1 ? 'activeEle' : ''}`}>Course Overview</p>
-                    <p onClick={() => setSection(2)} className={`list-elements ${section === 2 ? 'activeEle' : ''}`}>Resources</p>
+                    <p onClick={() => setSection(2)} className={`list-elements ${section === 2 ? 'activeEle' : ''}`}>Practice Test</p>
                 </div>
 
                 <div className="rightCourseHome">
@@ -109,7 +109,11 @@ const CourseHome = () => {
                             </div>
                         </>
                     ) : (
-                        <h1>Resources</h1>
+                        <>
+                            <h1 style={{marginBottom:'20px'}}>Practice Test</h1>
+                            <p style={{marginBottom:'20px'}}><b>Remainder:</b> This test can only be taken once after which the test page will not show, however you can download your test performance</p>
+                            <a className='enroll-btn' href={`${courseData.testLink}`}>Start Test</a>
+                        </>
                     )}
                 </div>
             </div>

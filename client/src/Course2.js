@@ -140,11 +140,11 @@ const Course = () => {
           </div>
         </div>
         <div className="notification-section">
-          <img src={bell} alt="notify" className="notification-icon" />
+          {/* <img src={bell} alt="notify" className="notification-icon" />
           <div className="coins">
             <img src={coinIcon} alt="coin" className="coin-image" />
             <span className="coin-amount">3500</span>
-          </div>
+          </div> */}
         </div>
       </div>
       <div className="course-layout">
